@@ -66,3 +66,7 @@ def get_answer(id: int):
         return answer, 200
 
 # You can also include other endpoints or configurations here.
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)

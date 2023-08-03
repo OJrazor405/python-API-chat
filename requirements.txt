@@ -1,0 +1,2 @@
+langcorn
+pinecone-client

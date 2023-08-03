@@ -1,4 +1,3 @@
-from dotenv import load_dotenv
 from langchain.vectorstores import Pinecone
 
 import os
@@ -18,16 +17,16 @@ class VectorDB:
         # load_dotenv(dotenv_path)
 
         # # Load the API keys from the .env file
-        # self.pinecone_api_key = os.getenv("PINECONE_API_KEY")
-        # self.pinecone_env_key = os.getenv("PINECONE_API_ENV")        
+        self.pinecone_api_key = os.getenv("PINECONE_API_KEY")
+        self.pinecone_env_key = os.getenv("PINECONE_API_ENV")        
     
     # Function for pushing embeddings to Pinecone. Returns the docsearch object
     def pushTextEmbeddings(self, texts):
         self.texts = texts
         # initialize pinecone
         pinecone.init(
-            # api_key=self.pinecone_api_key,  # find at app.pinecone.io
-            # environment=self.pinecone_env_key  # next to api key in console
+            api_key=self.pinecone_api_key,  # find at app.pinecone.io
+            environment=self.pinecone_env_key  # next to api key in console
         )
 
         # THIS IS THE FUNCTIONALITY FOR CREATING A NEW INDEX EVERY TIME WE PUSH EMBEDDINGS - IMPLEMENT LATER
@@ -46,8 +45,8 @@ class VectorDB:
     def pullVectorstore(self):
         # initialize pinecone
         pinecone.init(
-            # api_key=self.pinecone_api_key,  # find at app.pinecone.io
-            # environment=self.pinecone_env_key  # next to api key in console
+            api_key=self.pinecone_api_key,  # find at app.pinecone.io
+            environment=self.pinecone_env_key  # next to api key in console
         )
         vectorstore = Pinecone.from_existing_index(embedding=self.embeddings, index_name=self.index_name, namespace=self.namespace)
         
@@ -55,8 +54,8 @@ class VectorDB:
     
     def deleteAllVectors(self):
         pinecone.init(
-            # api_key=self.pinecone_api_key,  # find at app.pinecone.io
-            # environment=self.pinecone_env_key  # next to api key in console
+            api_key=self.pinecone_api_key,  # find at app.pinecone.io
+            environment=self.pinecone_env_key  # next to api key in console
         )
         index = pinecone.Index(self.index_name)
         index.delete(delete_all=True)

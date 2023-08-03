@@ -1,4 +1,3 @@
-from dotenv import load_dotenv
 from langchain.prompts import PromptTemplate
 from langchain.vectorstores import Pinecone
 from langchain.chat_models import ChatOpenAI
@@ -18,11 +17,11 @@ class SemanticSearch:
         # load_dotenv(dotenv_path)
 
         # Load the OpenAI API key from the .env file
-        # self.openai_api_key = os.getenv("OPENAI_API_KEY")
+        self.openai_api_key = os.getenv("OPENAI_API_KEY")
 
     def runSemanticSearch(self):        
         # Create an OpenAI language model with the loaded API key
-        llm = ChatOpenAI(temperature=0, model="gpt-4", streaming=True)
+        llm = ChatOpenAI(temperature=0, openai_api_key=self.openai_api_key, model="gpt-4", streaming=True)
         
         # Set the prompt template for the question-answering model
         prompt_template = """You are a AI assistant called Egde AI. Use the following pieces of context to answer the question at the end. All answers should be answered with a gentle and informative tone.

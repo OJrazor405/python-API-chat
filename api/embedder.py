@@ -1,7 +1,6 @@
 from langchain.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.embeddings.openai import OpenAIEmbeddings
-from dotenv import load_dotenv
 
 import os
 
@@ -9,15 +8,15 @@ import os
 class Embedder:
 
     # # Constructor
-    # def __init__(self):
-    #     # Load the .env file with your API keys
-    #     script_dir = os.path.dirname(os.path.abspath(__file__))  # Gets the directory of the current script
-    #     dotenv_path = os.path.join(script_dir, '..', '.env.local')  # Gets the path to the .env.local file
-    #     load_dotenv(dotenv_path)
-    #     self.openai_api_key = os.getenv("OPENAI_API_KEY")
+    def __init__(self):
+        # Load the .env file with your API keys
+        # script_dir = os.path.dirname(os.path.abspath(__file__))  # Gets the directory of the current script
+        # dotenv_path = os.path.join(script_dir, '..', '.env.local')  # Gets the path to the .env.local file
+        # load_dotenv(dotenv_path)
+        self.openai_api_key = os.getenv("OPENAI_API_KEY")
     
     def embedder(self):
-        embeddings = OpenAIEmbeddings()
+        embeddings = OpenAIEmbeddings(openai_api_key=self.openai_api_key)
         
         return embeddings
     

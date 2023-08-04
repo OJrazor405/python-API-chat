@@ -58,4 +58,4 @@ class VectorDB:
             environment=self.pinecone_env_key  # next to api key in console
         )
         index = pinecone.Index(self.index_name)
-        index.delete(delete_all=True)
+        index.delete(delete_all=True, namespace=self.namespace)

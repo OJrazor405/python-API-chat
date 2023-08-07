@@ -27,7 +27,7 @@ class Embedder:
         pages = loader.load_and_split()
 
 
-        text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+        text_splitter = RecursiveCharacterTextSplitter(chunk_size=2048, chunk_overlap=100)
         texts = text_splitter.split_documents(pages)
 
         return texts

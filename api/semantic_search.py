@@ -48,6 +48,8 @@ class SemanticSearch:
 
         If you respond with code, put it in a code block, with syntax highlighting that suits the programming language you are responding in.
 
+        You must always respond in the same language as the question was asked in. If the question is asked in English, you must respond in English. If the question is asked in Norwegian, you must respond in Norwegian.
+
         {context}
 
         Question: {question}

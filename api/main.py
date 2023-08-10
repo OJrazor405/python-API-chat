@@ -16,7 +16,7 @@ def process_pdf(request: PDFRequest):
         embeddings = embedding.embedder()
 
         vectordb = VectorDB(embeddings, request.namespace, request.index_name)
-        # vectordb.deleteAllVectors()
+        vectordb.deleteAllVectors()
         vectordb.pushTextEmbeddings(texts)
 
         return {"message": "File successfully uploaded"}, 200
